@@ -1,0 +1,880 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/1/2018 10:48:21 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="VADER"
+  DTS:CreatorName="VADER\micha"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{0F800CB2-3149-4F78-95AE-9632956257D2}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.1000.169"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="BackupSurvey2018Load"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{FDCFACA6-6CF0-486E-95FC-006B79D6F344}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{EE5E7129-98F5-43B9-B2E8-05F9D851F46C}"
+      DTS:ObjectName="DestinationConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D190037D-B758-4497-9A19-30C01E48CEC5}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=VADER;Initial Catalog=BackupSurvey2018;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{15CFD305-6BB2-4438-A77B-E3B91D259AE1}"
+      DTS:ObjectName="SourceConnectionFlatFile">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\temp\BackupSurvey2018.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="26"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Timestamp"
+              DTS:DTSID="{43CAE8BA-1869-442A-AEE8-4E9799824062}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="How many SQL servers does your company manage?"
+              DTS:DTSID="{040D5A42-D7DF-42B3-BB59-3039FF6E679E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="How many SQL Server databases does your company manage?"
+              DTS:DTSID="{CB558FFE-E81B-4019-AB4C-D4023F413144}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="What's your total SQL Server database volume?"
+              DTS:DTSID="{EAFB86BA-F3B4-4D59-885C-223320852B1C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="What's your biggest SQL Server database?"
+              DTS:DTSID="{C846FF10-7EF0-4C15-AAEB-D584DAD204F7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="20"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="How many SQL Server DBAs does your company employ?"
+              DTS:DTSID="{D43FD4BD-0CDD-423A-BD0C-0B0AC90FA358}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4000"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="What versions of SQL are you using?"
+              DTS:DTSID="{F50E7A88-4B07-4DAA-8845-C699B155AB18}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4000"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Which of these features are you using?"
+              DTS:DTSID="{AE033D6B-B93D-443B-B712-580C446CFBB4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4000"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="What do you use for backups?"
+              DTS:DTSID="{41CF3FA0-2846-49C3-B7D4-6775D8BBE9A2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4000"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="How are you testing your SQL Server backups?"
+              DTS:DTSID="{1744C502-4C33-4F0A-AF3D-9141CCA203EF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="4000"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="What SQL Server HA DR tools features do you use?"
+              DTS:DTSID="{2E183D13-CA84-4CC9-8FE0-C82C6A134033}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="4000"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="What's your biggest worry or pain for your SQL Server backups? (i e  having enough space, getting done within backup window, having access in an emergency)"
+              DTS:DTSID="{DCB49884-5698-456C-BC52-3F1816FC2C4B}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DTSID="{AEA83D03-E444-4149-A74B-D087ACE03FB4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - STAGE"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - STAGE"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[STAGE]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - STAGE.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].Columns[Timestamp]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="26"
+                      cachedName="Timestamp"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[ResponseTime]"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[Timestamp]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].Columns[How many SQL servers does your company manage?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="How many SQL servers does your company manage?"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[ServerCount]"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[How many SQL servers does your company manage?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].Columns[How many SQL Server databases does your company manage?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="How many SQL Server databases does your company manage?"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[DatabaseCount]"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[How many SQL Server databases does your company manage?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].Columns[What's your total SQL Server database volume?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="What's your total SQL Server database volume?"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[DataVolume]"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What's your total SQL Server database volume?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].Columns[What's your biggest SQL Server database?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="What's your biggest SQL Server database?"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[LargestDB]"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What's your biggest SQL Server database?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].Columns[How many SQL Server DBAs does your company employ?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="How many SQL Server DBAs does your company employ?"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[DBACount]"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[How many SQL Server DBAs does your company employ?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].Columns[What versions of SQL are you using?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="What versions of SQL are you using?"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[SQLVersions]"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What versions of SQL are you using?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].Columns[Which of these features are you using?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="Which of these features are you using?"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[SQLFeatures]"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[Which of these features are you using?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].Columns[What do you use for backups?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="What do you use for backups?"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[BackupTools]"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What do you use for backups?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].Columns[How are you testing your SQL Server backups?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="How are you testing your SQL Server backups?"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[BackupTesting]"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[How are you testing your SQL Server backups?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].Columns[What SQL Server HA DR tools features do you use?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="What SQL Server HA DR tools features do you use?"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[HADRTools]"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What SQL Server HA DR tools features do you use?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].Columns[What's your biggest worry or pain for your SQL Server backups? (i e  having enough space, getting done within backup window, having access in an emergency)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="What's your biggest worry or pain for your SQL Server backups? (i e  having enough space, getting done within backup window, having access in an emergency)"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[BackupPain]"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What's your biggest worry or pain for your SQL Server backups? (i e  having enough space, getting done within backup window, having access in an emergency)]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[ResponseID]"
+                      dataType="i4"
+                      name="ResponseID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[ResponseTime]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="ResponseTime" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[ServerCount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="ServerCount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[DatabaseCount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="DatabaseCount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[DataVolume]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="DataVolume" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[LargestDB]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="LargestDB" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[DBACount]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="DBACount" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[SQLVersions]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="SQLVersions" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[SQLFeatures]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="SQLFeatures" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[BackupTools]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BackupTools" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[BackupTesting]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BackupTesting" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[HADRTools]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="HADRTools" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input].ExternalColumns[BackupPain]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="BackupPain" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - STAGE.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - STAGE.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - STAGE.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - STAGE.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="Source - BackupSurvey2018_csv"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionFlatFile]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[Timestamp]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[Timestamp]"
+                      length="26"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[Timestamp]"
+                      name="Timestamp"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[How many SQL servers does your company manage?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[How many SQL servers does your company manage?]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[How many SQL servers does your company manage?]"
+                      name="How many SQL servers does your company manage?"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[How many SQL Server databases does your company manage?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[How many SQL Server databases does your company manage?]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[How many SQL Server databases does your company manage?]"
+                      name="How many SQL Server databases does your company manage?"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What's your total SQL Server database volume?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[What's your total SQL Server database volume?]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What's your total SQL Server database volume?]"
+                      name="What's your total SQL Server database volume?"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What's your biggest SQL Server database?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[What's your biggest SQL Server database?]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What's your biggest SQL Server database?]"
+                      name="What's your biggest SQL Server database?"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[How many SQL Server DBAs does your company employ?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[How many SQL Server DBAs does your company employ?]"
+                      length="20"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[How many SQL Server DBAs does your company employ?]"
+                      name="How many SQL Server DBAs does your company employ?"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What versions of SQL are you using?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[What versions of SQL are you using?]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What versions of SQL are you using?]"
+                      name="What versions of SQL are you using?"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[Which of these features are you using?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[Which of these features are you using?]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[Which of these features are you using?]"
+                      name="Which of these features are you using?"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What do you use for backups?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[What do you use for backups?]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What do you use for backups?]"
+                      name="What do you use for backups?"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[How are you testing your SQL Server backups?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[How are you testing your SQL Server backups?]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[How are you testing your SQL Server backups?]"
+                      name="How are you testing your SQL Server backups?"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What SQL Server HA DR tools features do you use?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[What SQL Server HA DR tools features do you use?]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What SQL Server HA DR tools features do you use?]"
+                      name="What SQL Server HA DR tools features do you use?"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What's your biggest worry or pain for your SQL Server backups? (i e  having enough space, getting done within backup window, having access in an emergency)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[What's your biggest worry or pain for your SQL Server backups? (i e  having enough space, getting done within backup window, having access in an emergency)]"
+                      length="4000"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].Columns[What's your biggest worry or pain for your SQL Server backups? (i e  having enough space, getting done within backup window, having access in an emergency)]"
+                      name="What's your biggest worry or pain for your SQL Server backups? (i e  having enough space, getting done within backup window, having access in an emergency)"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[Timestamp]"
+                      codePage="1252"
+                      dataType="str"
+                      length="26"
+                      name="Timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[How many SQL servers does your company manage?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="How many SQL servers does your company manage?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[How many SQL Server databases does your company manage?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="How many SQL Server databases does your company manage?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[What's your total SQL Server database volume?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="What's your total SQL Server database volume?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[What's your biggest SQL Server database?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="What's your biggest SQL Server database?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[How many SQL Server DBAs does your company employ?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="How many SQL Server DBAs does your company employ?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[What versions of SQL are you using?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="What versions of SQL are you using?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[Which of these features are you using?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="Which of these features are you using?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[What do you use for backups?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="What do you use for backups?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[How are you testing your SQL Server backups?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="How are you testing your SQL Server backups?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[What SQL Server HA DR tools features do you use?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="What SQL Server HA DR tools features do you use?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output].ExternalColumns[What's your biggest worry or pain for your SQL Server backups? (i e  having enough space, getting done within backup window, having access in an emergency)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="What's your biggest worry or pain for your SQL Server backups? (i e  having enough space, getting done within backup window, having access in an emergency)" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task 1\Destination - STAGE.Inputs[Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task 1\Source - BackupSurvey2018_csv.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+</DTS:Executable>
